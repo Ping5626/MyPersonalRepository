@@ -1,0 +1,17 @@
+#开发环境配置
+
+#数据库配置
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://10.128.128.43:13308/dasevdb?characterEncoding=utf8&&useSSL=true&serverTimezone=Asia/Shanghai
+    username: app
+    password: root123456
+
+
+img:
+  path:
+    qr: C:\Users\Lenovo\Downloads
+
+
+

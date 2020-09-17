@@ -36,6 +36,16 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
+        </dependency>
         <!--  spring jar  -->
 
         <!--  多数据源配置详情  -->
@@ -58,13 +68,22 @@
             <version>2.5.7</version>
         </dependency>
         <!--  多数据源配置详情  -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>2.9.0</version>
+        </dependency>
 
         <!--  二维码  -->
         <dependency>
             <groupId>jp.sourceforge</groupId>
             <artifactId>qrcode</artifactId>
-            <systemPath>${project.basedir}/lib/QRCode.jar</systemPath>
             <scope>system</scope>
+            <systemPath>${project.basedir}/lib//QRCode.jar</systemPath>
         </dependency>
         <!--  二维码  -->
         <!--  json jar  -->
@@ -128,23 +147,6 @@
         </dependency>
         <!--  lombok jar  -->
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.junit.vintage</groupId>
-                    <artifactId>junit-vintage-engine</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <scope>runtime</scope>
-            <optional>true</optional>
-        </dependency>
 <!--        <dependency>-->
 <!--            <groupId>org.springframework.boot</groupId>-->
 <!--            <artifactId>spring-boot-starter-data-elasticsearch</artifactId>-->

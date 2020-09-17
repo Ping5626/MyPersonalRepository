@@ -1,24 +1,26 @@
-package yiping.gao.common.utils.qrCode;
+package com.yiping.gao.pojo.qrCode;
 
 import com.swetake.util.Qrcode;
 import jp.sourceforge.qrcode.QRCodeDecoder;
 import jp.sourceforge.qrcode.exception.DecodingFailedException;
+import org.springframework.beans.factory.annotation.Value;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 
 /**
  * FileName: TwoDimensionCode
  * Author: 高一平
  * Date: 2018/2/2 18:06
- * Description: 生成/解析二维码
+ * Description: 二维码操作核心类
  */
 
-public class TwoDimensionCodeUtil {
+public class TwoDimensionCode {
+
+    @Value("img.path.qr")
+    private String qrPath;
 
     /**
      * 生成二维码(QRCode)图片
@@ -68,6 +70,7 @@ public class TwoDimensionCodeUtil {
     public void encoderQRCode(String content, String imgPath, String imgType, int size) {
         try {
             BufferedImage bufImg = this.qRCodeCommon(content, imgType, size);
+
             File imgFile = new File(imgPath);
             // 生成二维码QRCode图片
             ImageIO.write(bufImg, imgType, imgFile);
@@ -102,6 +105,7 @@ public class TwoDimensionCodeUtil {
      */
     private BufferedImage qRCodeCommon(String content, String imgType, int size) {
         BufferedImage bufImg = null;
+        Graphics2D gs = null;
         try {
             Qrcode qrcodeHandler = new Qrcode();
             // 设置二维码排错率，可选L(7%)、M(15%)、Q(25%)、H(30%)，排错率越高可存储的信息越少，但对二维码清晰度的要求越小
@@ -114,10 +118,11 @@ public class TwoDimensionCodeUtil {
             // 图片尺寸
             int imgSize = 67 + 12 * (size - 1);
             bufImg = new BufferedImage(imgSize, imgSize, BufferedImage.TYPE_INT_RGB);
-            Graphics2D gs = bufImg.createGraphics();
+            gs = bufImg.createGraphics();
             // 设置背景颜色
             gs.setBackground(Color.WHITE);
             gs.clearRect(0, 0, imgSize, imgSize);
+
             // 设定图像颜色> BLACK
             gs.setColor(Color.BLACK);
             // 设置偏移量，不设置可能导致解析出错
@@ -135,10 +140,17 @@ public class TwoDimensionCodeUtil {
             } else {
                 throw new Exception("QRCode content bytes length = " + contentBytes.length + " not in [0, 800].");
             }
-            gs.dispose();
+            String logoPath = qrPath + "logo.jpg";
+            if (logoPath != null && logoPath.length() > 0) {
+                //实例化一个Image对象。
+                Image img = ImageIO.read(new File(logoPath));
+                gs.drawImage(img, 50, 50, null);
+            }
             bufImg.flush();
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            gs.dispose();
         }
         return bufImg;
     }
@@ -190,17 +202,18 @@ public class TwoDimensionCodeUtil {
     }
 
     public static void main(String[] args) {
-        TwoDimensionCodeUtil handler = new TwoDimensionCodeUtil();
-        String imgPath = "E:\\WorkSpace\\IDEA\\Data\\Qrcode\\6.png";
+        TwoDimensionCode handler = new TwoDimensionCode();
+        String imgPath = "D:\\BDIOT_QRCODE.png";
         String encoderContent = "你好";
         handler.encoderQRCode(encoderContent, imgPath, "png");
-//      try {
-//          OutputStream output = new FileOutputStream(imgPath);
-//          handler.encoderQRCode(content, output);
-//      } catch (Exception e) {
-//          e.printStackTrace();
-//      }
+      /*try {
+          OutputStream output = new FileOutputStream(imgPath);
+          handler.encoderQRCode(content, output);
+      } catch (Exception e) {
+          e.printStackTrace();
+      }*/
         System.out.println("========encoder success");
+
 
         String decoderContent = handler.decoderQRCode(imgPath);
         System.out.println("解析结果如下：");

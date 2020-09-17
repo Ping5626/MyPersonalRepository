@@ -1,4 +1,4 @@
-package yiping.gao.common.utils.qrCode;
+package com.yiping.gao.pojo.qrCode;
 
 import jp.sourceforge.qrcode.data.QRCodeImage;
 

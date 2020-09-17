@@ -1,4 +1,4 @@
-package yiping.gao.common.utils.qrCode;
+package com.yiping.gao.common.utils.qrCode;
 
 import com.swetake.util.Qrcode;
 
@@ -14,7 +14,7 @@ import java.io.File;
  * Description: 生成/解析带logo的二维码
  */
 
-public class TwoDimensionCodeWithLogoUtil {
+public class TwoDimensionCodeWithLogoUtils {
 
     /**
      * 生成二维码(QRCode)图片
@@ -74,7 +74,7 @@ public class TwoDimensionCodeWithLogoUtil {
         String imgPath = "E:/qrcode.png";
         String imgPath1 = "E:/logo.jpg";
         String encoderContent = "你若不离不弃，我必生死相依。";
-        TwoDimensionCodeWithLogoUtil qrcode = new TwoDimensionCodeWithLogoUtil();
+        TwoDimensionCodeWithLogoUtils qrcode = new TwoDimensionCodeWithLogoUtils();
         qrcode.createQRCode(encoderContent, imgPath, imgPath1);
     }
 

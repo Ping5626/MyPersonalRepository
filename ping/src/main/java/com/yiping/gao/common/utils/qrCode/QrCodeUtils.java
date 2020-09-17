@@ -1,4 +1,6 @@
-package yiping.gao.common.utils.qrCode;
+package com.yiping.gao.common.utils.qrCode;
+
+import com.yiping.gao.pojo.qrCode.TwoDimensionCode;
 
 import java.io.File;
 
@@ -9,7 +11,7 @@ import java.io.File;
  * Description: 二维码生成器
  */
 
-public class QrCodeUtil {
+public class QrCodeUtils {
 
     public void generatingQrCode(String context, String imgPath) {
         TwoDimensionCode handler = new TwoDimensionCode();
@@ -28,10 +30,10 @@ public class QrCodeUtil {
     public static void main(String[] args) {
         String imgPath = "D:\\BDIOT_QRCODE.png";
         String context = "这是一个小测试";
-        QrCodeUtil qrCodeUtil = new QrCodeUtil();
-        qrCodeUtil.generatingQrCode(context, imgPath);
+        QrCodeUtils qrCodeUtils = new QrCodeUtils();
+        qrCodeUtils.generatingQrCode(context, imgPath);
         System.out.println("成功");
-        String analyticQrcode = qrCodeUtil.analyticQrcode(imgPath);
+        String analyticQrcode = qrCodeUtils.analyticQrcode(imgPath);
         System.out.println("二维码信息为：" + analyticQrcode);
     }
 

@@ -14,8 +14,7 @@ public class ClassTest {
 
     public static void run() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         Result result = new Result();
-        result.setCode("200");
-        result.setMsg("成功");
+        result.success();
 
         /**
          * 获取Class对象方式1

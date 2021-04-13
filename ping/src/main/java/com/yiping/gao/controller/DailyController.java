@@ -1,8 +1,8 @@
 package com.yiping.gao.controller;
 
-import com.yiping.gao.common.utils.ResultUtils;
 import com.yiping.gao.pojo.Result;
-import com.yiping.gao.service.ServiceHandle;
+import com.yiping.gao.service.base.TestBaseService;
+import com.yiping.gao.service.sys.ServiceHandle;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,7 +32,7 @@ public class DailyController {
                           @RequestBody Object object) {
         Result result = new Result();
         try {
-            result = ServiceHandle.invoke("success", object, ResultUtils.class);
+            result = ServiceHandle.invoke("success", object, TestBaseService.class);
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {

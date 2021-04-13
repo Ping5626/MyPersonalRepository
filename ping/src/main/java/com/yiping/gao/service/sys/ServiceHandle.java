@@ -1,4 +1,4 @@
-package com.yiping.gao.service;
+package com.yiping.gao.service.sys;
 
 import com.yiping.gao.pojo.Result;
 

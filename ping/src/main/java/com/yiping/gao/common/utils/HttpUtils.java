@@ -35,6 +35,26 @@ public class HttpUtils {
     private final static String CONTENT_TYPE = "Content-Type";
     private CloseableHttpClient httpClient;
 
+    public enum HttpEnums {
+        /**
+         * HTTP相关参数
+         */
+        CONTENT_TYPE("Content-Type"),
+        COMMON("application/x-www-form-urlencoded"),
+        JSON("application/json"),
+        MULTIPART("multipart/form-data"),
+        ;
+
+        private String key;
+        public String getKey() {
+            return key;
+        }
+
+        HttpEnums(String key) {
+            this.key = key;
+        }
+    }
+
     /**
      * Http默认配置
      *

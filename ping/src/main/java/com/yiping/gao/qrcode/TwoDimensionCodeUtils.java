@@ -1,7 +1,6 @@
-package com.yiping.gao.common.utils.qrCode;
+package com.yiping.gao.qrcode;
 
 import com.swetake.util.Qrcode;
-import com.yiping.gao.pojo.qrCode.TwoDimensionCodeImage;
 import jp.sourceforge.qrcode.QRCodeDecoder;
 import jp.sourceforge.qrcode.exception.DecodingFailedException;
 import javax.imageio.ImageIO;

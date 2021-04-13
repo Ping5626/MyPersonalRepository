@@ -1,7 +1,7 @@
 package com.yiping.gao.controller;
 
 import com.yiping.gao.common.utils.ResultUtils;
-import com.yiping.gao.pojo.dto.Result;
+import com.yiping.gao.pojo.Result;
 import com.yiping.gao.service.ServiceHandle;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;

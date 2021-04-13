@@ -1,6 +1,6 @@
 package com.yiping.gao.common.utils;
 
-import com.yiping.gao.pojo.dto.Result;
+import com.yiping.gao.pojo.Result;
 import com.yiping.gao.service.AbstractService;
 
 /**

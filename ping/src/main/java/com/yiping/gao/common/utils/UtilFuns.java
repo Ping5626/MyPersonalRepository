@@ -45,44 +45,6 @@ public class UtilFuns {
         return list;
     }
 
-    /**
-     * 移除字符串中的数字
-     *
-     * @param string
-     * @return
-     */
-    public static String removeNumbers(String string) {
-        string = string.replace("0", "")
-                .replace("1", "")
-                .replace("2", "")
-                .replace("3", "")
-                .replace("4", "")
-                .replace("5", "")
-                .replace("6", "")
-                .replace("7", "")
-                .replace("8", "")
-                .replace("9", "");
-        return string;
-    }
-
-    /**
-     * @param str
-     * @param string
-     * @throws @author 作者：高一平
-     * @Title: checkStrExist
-     * @Description: 判断string中是否存在字符串str
-     * @return: boolean
-     */
-    public static boolean checkStrExist(String str, String string) {
-        boolean flag;
-        if (string.indexOf(str) >= 0) {
-            flag = true;
-        } else {
-            flag = false;
-        }
-        return flag;
-    }
-
     // 获得年龄
     public int age(String dateStart, String dateEnd) throws Exception {
         int yearStart = Integer.parseInt(dateStart.substring(0, 4));

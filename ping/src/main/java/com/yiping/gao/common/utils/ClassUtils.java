@@ -1,6 +1,6 @@
 package com.yiping.gao.common.utils;
 
-import com.yiping.gao.pojo.dto.Result;
+import com.yiping.gao.pojo.Result;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.*;
@@ -24,7 +24,7 @@ public class ClassUtils {
         /**
          * 获取Class对象方式2
          */
-        Class clazz2 = Class.forName("com.yiping.gao.pojo.dto.Result");
+        Class clazz2 = Class.forName("com.yiping.gao.pojo.Result");
 
         /**
          * 获取类名，含包名

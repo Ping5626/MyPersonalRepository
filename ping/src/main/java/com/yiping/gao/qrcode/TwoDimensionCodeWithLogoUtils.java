@@ -1,4 +1,4 @@
-package com.yiping.gao.common.utils.qrCode;
+package com.yiping.gao.qrcode;
 
 import com.swetake.util.Qrcode;
 

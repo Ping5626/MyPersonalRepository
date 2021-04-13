@@ -1,7 +1,7 @@
-package com.yiping.gao.common.utils.redis;
+package com.yiping.gao.common.utils;
 
-import com.yiping.gao.config.redis.RedisTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.util.CollectionUtils;
 
 import java.util.List;

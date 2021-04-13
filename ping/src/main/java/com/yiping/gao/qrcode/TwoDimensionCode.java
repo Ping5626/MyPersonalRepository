@@ -1,4 +1,4 @@
-package com.yiping.gao.pojo.qrCode;
+package com.yiping.gao.qrcode;
 
 import com.swetake.util.Qrcode;
 import jp.sourceforge.qrcode.QRCodeDecoder;

@@ -1,6 +1,4 @@
-package com.yiping.gao.common.utils.qrCode;
-
-import com.yiping.gao.pojo.qrCode.TwoDimensionCode;
+package com.yiping.gao.qrcode;
 
 import java.io.File;
 

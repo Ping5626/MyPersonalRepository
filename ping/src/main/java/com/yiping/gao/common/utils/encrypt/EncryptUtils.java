@@ -36,12 +36,20 @@ public class EncryptUtils {
         return result;
     }
 
+    /**
+     * MD5加密
+     *
+     * @param input
+     * @return
+     */
     public static String encryptByMD5(String input) {
         String result = encrypt(input, MD5);
         return result;
     }
 
     /**
+     * 加密
+     *
      * @param input
      * @return
      */
@@ -137,7 +145,6 @@ public class EncryptUtils {
             e.printStackTrace();
             logger.error("加密失败");
         }
-
         return null;
     }
 

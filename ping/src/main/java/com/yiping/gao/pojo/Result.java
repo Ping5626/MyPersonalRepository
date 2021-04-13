@@ -1,4 +1,4 @@
-package com.yiping.gao.pojo.dto;
+package com.yiping.gao.pojo;
 
 import lombok.Data;
 

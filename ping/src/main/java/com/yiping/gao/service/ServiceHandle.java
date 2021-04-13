@@ -1,6 +1,6 @@
 package com.yiping.gao.service;
 
-import com.yiping.gao.pojo.dto.Result;
+import com.yiping.gao.pojo.Result;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

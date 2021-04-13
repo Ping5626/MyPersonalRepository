@@ -128,4 +128,5 @@ public class EncodeUtils {
             throw ExceptionUtils.unchecked(e);
         }
     }
+
 }

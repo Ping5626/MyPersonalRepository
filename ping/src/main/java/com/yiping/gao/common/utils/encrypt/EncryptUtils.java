@@ -23,6 +23,47 @@ public class EncryptUtils {
     private static final String MD5 = "MD5";
 
     /**
+     * 加密算法
+     */
+    private static Algorithm ALGORITHM = Algorithm.AES;
+    /**
+     * 加密模式
+     */
+    private static Model MODEL = Model.ECB;
+    /**
+     * 加密算法/加密模式/填充策略
+     */
+    private static String ALGORITHM_MODEL = ALGORITHM.name + "/" + MODEL.name + "/PKCS5Padding";
+
+    /**
+     * 加密算法类型枚举类
+     */
+    public enum Algorithm {
+        AES("AES", 16),
+        DES3("DESede", 24);
+        String name;
+        int secretKeyLength;
+
+        Algorithm(String name, int secretKeyLength) {
+            this.name = name;
+            this.secretKeyLength = secretKeyLength;
+        }
+    }
+
+    /**
+     * 加密模式枚举类
+     */
+    public enum Model {
+        ECB("ECB"),
+        CBC("CBC");
+        String name;
+
+        Model(String name) {
+            this.name = name;
+        }
+    }
+
+    /**
      * SHA256加密
      * SHA（Secure Hash Algorithm）安全散列算法
      * 这种算法的特点是数据的少量更改会在Hash值中产生不可预知的大量更改
@@ -72,47 +113,6 @@ public class EncryptUtils {
     }
 
     /**
-     * 加密算法类型枚举类
-     */
-    public enum Algorithm {
-        AES("AES", 16),
-        DES3("DESede", 24);
-        String name;
-        int secretKeyLength;
-
-        Algorithm(String name, int secretKeyLength) {
-            this.name = name;
-            this.secretKeyLength = secretKeyLength;
-        }
-    }
-
-    /**
-     * 加密模式枚举类
-     */
-    public enum Model {
-        ECB("ECB"),
-        CBC("CBC");
-        String name;
-
-        Model(String name) {
-            this.name = name;
-        }
-    }
-
-    /**
-     * 加密算法
-     */
-    private static Algorithm ALGORITHM = Algorithm.AES;
-    /**
-     * 加密模式
-     */
-    private static Model MODEL = Model.ECB;
-    /**
-     * 加密算法/加密模式/填充策略
-     */
-    private static String ALGORITHM_MODEL = ALGORITHM.name + "/" + MODEL.name + "/PKCS5Padding";
-
-    /**
      * 加密算法和加密逻辑的设置
      *
      * @param algorithm
@@ -122,6 +122,34 @@ public class EncryptUtils {
         ALGORITHM = algorithm;
         MODEL = model;
         ALGORITHM_MODEL = algorithm.name + "/" + model.name + "/PKCS5Padding";
+    }
+
+    /**
+     * 密码对象初始化
+     *
+     * @param key
+     * @param cipherModel
+     * @return
+     */
+    private static Cipher initCipher(String key, int cipherModel) {
+        if (!StringUtils.isEmpty(key)) {
+            try {
+                //根据密码生成秘钥
+                SecretKeySpec secretKeySpec = new SecretKeySpec(key.getBytes(DEFAULT_CHARSET), ALGORITHM.name);
+                //获取加密对象
+                Cipher cipher = Cipher.getInstance(ALGORITHM_MODEL);
+                //初始化密码对象
+                cipher.init(cipherModel, secretKeySpec);
+                return cipher;
+            } catch (Exception e) {
+                e.printStackTrace();
+                logger.error("Cipher对象初始化失败");
+            }
+        } else {
+            logger.error("密码为空");
+            throw new IllegalArgumentException("密码不可为空");
+        }
+        return null;
     }
 
     /**
@@ -169,34 +197,6 @@ public class EncryptUtils {
         } catch (Exception e) {
             logger.error("解密失败");
             e.printStackTrace();
-        }
-        return null;
-    }
-
-    /**
-     * 密码对象初始化
-     *
-     * @param key
-     * @param cipherModel
-     * @return
-     */
-    private static Cipher initCipher(String key, int cipherModel) {
-        if (!StringUtils.isEmpty(key)) {
-            try {
-                //根据密码生成秘钥
-                SecretKeySpec secretKeySpec = new SecretKeySpec(key.getBytes(DEFAULT_CHARSET), ALGORITHM.name);
-                //获取加密对象
-                Cipher cipher = Cipher.getInstance(ALGORITHM_MODEL);
-                //初始化密码对象
-                cipher.init(cipherModel, secretKeySpec);
-                return cipher;
-            } catch (Exception e) {
-                e.printStackTrace();
-                logger.error("Cipher对象初始化失败");
-            }
-        } else {
-            logger.error("密码为空");
-            throw new IllegalArgumentException("密码不可为空");
         }
         return null;
     }

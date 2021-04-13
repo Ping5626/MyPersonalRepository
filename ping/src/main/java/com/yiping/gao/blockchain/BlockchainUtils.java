@@ -1,6 +1,4 @@
-package com.yiping.gao.common.utils.blockchain;
-
-import com.yiping.gao.pojo.blockchain.Block;
+package com.yiping.gao.blockchain;
 
 import java.util.List;
 
@@ -20,16 +18,16 @@ public class BlockchainUtils {
      * 用来检查hash值是否是于计算出来的hash值相等，同时previousHash值是否和前一个区块的hash值相等
      * 任何区块链中区块的一丝一毫改变都会导致这个函数返回false，也就证明了区块链无效了
      *
-     * @param blockChain
+     * @param blockchain
      * @return
      */
-    public static Boolean isChainValid(List<Block> blockChain) {
+    public static Boolean isChainValid(List<Block> blockchain) {
         Block currentBlock;
         Block preBlock;
 
-        for (int i = 1; i < blockChain.size(); i++) {
-            currentBlock = blockChain.get(i);
-            preBlock = blockChain.get(i - 1);
+        for (int i = 1; i < blockchain.size(); i++) {
+            currentBlock = blockchain.get(i);
+            preBlock = blockchain.get(i - 1);
             if (!currentBlock.hash.equals(currentBlock.getHash())) {
                 System.out.println("Current Hashes not equal");
                 return false;

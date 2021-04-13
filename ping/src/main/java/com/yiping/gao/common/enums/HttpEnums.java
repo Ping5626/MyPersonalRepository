@@ -1,4 +1,4 @@
-package yiping.gao.common.enums;
+package com.yiping.gao.common.enums;
 
 /**
  * @Author: 高一平

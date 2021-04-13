@@ -1,10 +1,7 @@
-package com.yiping.gao.controller.blockchain;
+package com.yiping.gao.blockchain;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
-import com.yiping.gao.pojo.blockchain.Block;
-import com.yiping.gao.common.utils.blockchain.BlockchainUtils;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 
@@ -49,8 +46,7 @@ import java.util.ArrayList;
  * 除非他们比你网络中所有的节点拥有更大的计算速度，可能是未来的量子计算机或者是其他什么。
  * ************************************************************************************************************
  **/
-@RestController
-public class BlockChainController {
+public class BlockchainTest {
 
     public static ArrayList<Block> blocks = new ArrayList<>();
     public static int difficulty = 5;

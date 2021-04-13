@@ -1,4 +1,4 @@
-package com.yiping.gao.pojo.blockchain;
+package com.yiping.gao.blockchain;
 
 import com.yiping.gao.common.utils.encrypt.EncryptUtils;
 import lombok.Data;

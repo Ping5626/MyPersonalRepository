@@ -48,6 +48,21 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
     }
 
     /**
+     * 转换为时间（天,时:分:秒.毫秒）
+     *
+     * @param timeMillis
+     * @return
+     */
+    public static String formatDateTime(long timeMillis) {
+        long day = timeMillis / (24 * 60 * 60 * 1000);
+        long hour = (timeMillis / (60 * 60 * 1000) - day * 24);
+        long min = ((timeMillis / (60 * 1000)) - day * 24 * 60 - hour * 60);
+        long s = (timeMillis / 1000 - day * 24 * 60 * 60 - hour * 60 * 60 - min * 60);
+        long sss = (timeMillis - day * 24 * 60 * 60 * 1000 - hour * 60 * 60 * 1000 - min * 60 * 1000 - s * 1000);
+        return (day > 0 ? day + "," : "") + hour + ":" + min + ":" + s + "." + sss;
+    }
+
+    /**
      * 得到日期时间字符串，转换格式（yyyy-MM-dd HH:mm:ss）
      */
     public static String formatDateTime(Date date) {
@@ -128,7 +143,7 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
      * @return
      */
     public static long pastHour(Date date) {
-        long t = new Date().getTime() - date.getTime();
+        long t = System.currentTimeMillis() - date.getTime();
         return t / (60 * 60 * 1000);
     }
 
@@ -139,7 +154,7 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
      * @return
      */
     public static long pastMinutes(Date date) {
-        long t = new Date().getTime() - date.getTime();
+        long t = System.currentTimeMillis()  - date.getTime();
         return t / (60 * 1000);
     }
 
@@ -150,36 +165,8 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
      * @return
      */
     public static long pastSeconds(Date date) {
-        long t = new Date().getTime() - date.getTime();
+        long t = System.currentTimeMillis() - date.getTime();
         return t / 1000;
-    }
-
-    /**
-     * 转换为时间（天,时:分:秒.毫秒）
-     *
-     * @param timeMillis
-     * @return
-     */
-    public static String formatDateTime(long timeMillis) {
-        long day = timeMillis / (24 * 60 * 60 * 1000);
-        long hour = (timeMillis / (60 * 60 * 1000) - day * 24);
-        long min = ((timeMillis / (60 * 1000)) - day * 24 * 60 - hour * 60);
-        long s = (timeMillis / 1000 - day * 24 * 60 * 60 - hour * 60 * 60 - min * 60);
-        long sss = (timeMillis - day * 24 * 60 * 60 * 1000 - hour * 60 * 60 * 1000 - min * 60 * 1000 - s * 1000);
-        return (day > 0 ? day + "," : "") + hour + ":" + min + ":" + s + "." + sss;
-    }
-
-    /**
-     * 获取两个日期之间的天数
-     *
-     * @param before
-     * @param after
-     * @return
-     */
-    public static double getDistanceOfTwoDate(Date before, Date after) {
-        long beforeTime = before.getTime();
-        long afterTime = after.getTime();
-        return (afterTime - beforeTime) / (1000 * 60 * 60 * 24);
     }
 
     /**
@@ -240,7 +227,7 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
      * @param num  正数为几年后，负数为几年前
      * @return
      */
-    public static Date getDate_PastOrFuture_Year(Date date, int num) {
+    public static Date getDatePastOrFutureYear(Date date, int num) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         calendar.set(Calendar.YEAR, calendar.get(Calendar.YEAR) + num);
@@ -256,7 +243,7 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
      * @return
      * @author: 高一平
      */
-    public static Date getDate_PastOrFuture_Day(Date date, int num) {
+    public static Date getDatePastOrFutureDay(Date date, int num) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         calendar.set(Calendar.DAY_OF_YEAR, calendar.get(Calendar.DAY_OF_YEAR) + num);
@@ -271,7 +258,7 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
      * @param num  正数为几小时后，负数为几小时前
      * @return
      */
-    public static Date getDate_PastOrFuture_Hours(Date date, int num) {
+    public static Date getDatePastOrFutureHours(Date date, int num) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         calendar.set(Calendar.HOUR_OF_DAY, calendar.get(Calendar.HOUR_OF_DAY) + num);
@@ -287,12 +274,25 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
      * @return
      * @author 高一平
      */
-    public static Date getDate_PastOrFuture_Minute(Date date, int num) {
+    public static Date getDatePastOrFutureMinute(Date date, int num) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         calendar.set(Calendar.MINUTE, calendar.get(Calendar.MINUTE) + num);
         Date time = calendar.getTime();
         return time;
+    }
+
+    /**
+     * 获取两个日期之间的天数
+     *
+     * @param before
+     * @param after
+     * @return
+     */
+    public static double getDistanceOfTwoDate(Date before, Date after) {
+        long beforeTime = before.getTime();
+        long afterTime = after.getTime();
+        return (afterTime - beforeTime) / (1000 * 60 * 60 * 24);
     }
 
 }

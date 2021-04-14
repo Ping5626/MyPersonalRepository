@@ -1,6 +1,3 @@
-/**
- * Copyright (c) 2005-2012 springside.org.cn
- */
 package com.yiping.gao.common.utils;
 
 import java.io.PrintWriter;
@@ -10,13 +7,12 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * 关于异常的工具类.
- * @author calvin
- * @version 2013-01-15
+ * @author
  */
 public class ExceptionUtils {
 
 	/**
-	 * 将CheckedException转换为UncheckedException.
+	 * 将 CheckedException 转换为 UncheckedException.
 	 */
 	public static RuntimeException unchecked(Exception e) {
 		if (e instanceof RuntimeException) {
@@ -27,7 +23,7 @@ public class ExceptionUtils {
 	}
 
 	/**
-	 * 将ErrorStack转化为String.
+	 * 将 ErrorStack 转化为 String.
 	 */
 	public static String getStackTraceAsString(Throwable e) {
 		if (e == null){
@@ -55,9 +51,7 @@ public class ExceptionUtils {
 	}
 
 	/**
-	 * 在request中获取异常类
-	 * @param request
-	 * @return 
+	 * 在 request 中获取异常类
 	 */
 	public static Throwable getThrowable(HttpServletRequest request){
 		Throwable ex = null;

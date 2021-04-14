@@ -4,7 +4,7 @@ import java.io.*;
 
 /**
  * @Author: 高一平
- * @Date: 2019/9/11 11:21
+ * @Date: 2019/9/11
  * @Description:
  **/
 public class FileUtils {

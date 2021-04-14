@@ -1,4 +1,4 @@
-package com.yiping.gao.common.utils;
+package com.yiping.gao.common.utils.http;
 
 import com.yiping.gao.common.utils.http.HttpUtils;
 import lombok.extern.slf4j.Slf4j;

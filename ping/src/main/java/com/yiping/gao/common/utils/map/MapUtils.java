@@ -2,6 +2,9 @@ package com.yiping.gao.common.utils.map;
 
 import lombok.Data;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * @author 高一平
  * @date 2021/4/13
@@ -188,6 +191,36 @@ public abstract class MapUtils {
         Double minLng = longitude - radiusLng;
         Double maxLng = longitude + radiusLng;
         return new Double[]{minLat, maxLat, minLng, maxLng};
+    }
+
+    /**
+     * 解析地址信息
+     *
+     * @param address 地址信息（需包含省市县/区等字符用于分割地址）
+     * @return
+     */
+    public Address formatAddress(String address) {
+        if (address != null && !address.isEmpty()) {
+            Address result = new Address();
+            String regex = "(?<province>[^特别行政区]+特别行政区|[^自治区]+自治区|[^省]+省|[^市]+市)(?<city>省直辖行政单位|省属虚拟市|市辖县|市辖区|县|自治州|[^地区]+地区|[^州]+州|[^盟]+盟|[^市]+市|[^区]+区|)?(?<district>[^旗]+旗|[^市]+市|[^区]+区|[^县]+县)?(?<town>[^县]+县|[^区]+区|[^乡]+乡|[^村]+村|[^镇]+镇|[^街道]+街道)?(?<village>.*)";
+            Matcher matcher = Pattern.compile(regex).matcher(address);
+            while (matcher.find()) {
+                result.setAddress(address);
+                result.setProvince(matcher.group("province"));
+                if (result.getProvince() != null
+                        && ("北京市".equals(result.getProvince()) || "上海市".equals(result.getProvince()) || "天津市".equals(result.getProvince()) || "重庆市".equals(result.getProvince()))) {
+                    result.setCity(result.getProvince());
+                    result.setDistrict(matcher.group("city"));
+                } else {
+                    result.setCity(matcher.group("city"));
+                    result.setDistrict(matcher.group("district"));
+                }
+                result.setTown(matcher.group("town"));
+                result.setStreet(matcher.group("village"));
+            }
+            return result;
+        }
+        return null;
     }
 
 }

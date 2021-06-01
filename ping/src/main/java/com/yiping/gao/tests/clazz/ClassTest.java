@@ -1,4 +1,4 @@
-package com.yiping.gao.tests;
+package com.yiping.gao.tests.clazz;
 
 import com.yiping.gao.pojo.Result;
 

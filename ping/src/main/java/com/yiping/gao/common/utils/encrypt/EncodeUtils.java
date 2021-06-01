@@ -1,7 +1,6 @@
 package com.yiping.gao.common.utils.encrypt;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 import java.net.URLEncoder;
 
 import com.yiping.gao.common.utils.ExceptionUtils;

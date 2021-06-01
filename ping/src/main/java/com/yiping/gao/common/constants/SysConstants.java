@@ -4,6 +4,8 @@ package com.yiping.gao.common.constants;
  * @author 高一平
  * @date 2021/4/14
  * @description
+ *
+ *
  */
 public class SysConstants {
 

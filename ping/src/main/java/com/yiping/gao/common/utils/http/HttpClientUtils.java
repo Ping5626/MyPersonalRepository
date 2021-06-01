@@ -1,6 +1,5 @@
 package com.yiping.gao.common.utils.http;
 
-import com.yiping.gao.common.utils.http.HttpUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.config.RequestConfig;

@@ -1,10 +1,6 @@
 package com.yiping.gao.common.utils;
 
-import com.yiping.gao.common.utils.encrypt.EncodeUtils;
-
 import java.io.UnsupportedEncodingException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * @author 高一平
